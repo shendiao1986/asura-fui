@@ -125,7 +125,7 @@ public class BootNavi implements IUIComponent {
 		String right = getValue(navi.getRight(), paras);
 
 		for (String n : m.keySet()) {
-			if ((pM.containsKey(n)) || ((!(StringUtil.isNullOrEmpty(right))) && (right.contains(n))))
+			if ((pM.containsKey(n)) || ((!(StringUtil.isNullOrEmpty(right))) && !(right.contains(n))))
 				continue;
 			String u = (String) m.get(n);
 			HtmlLi li = new HtmlLi(paras);
@@ -153,7 +153,7 @@ public class BootNavi implements IUIComponent {
 
 		middle.addChild(content);
 
-		for (String n : m.keySet()) {
+		/*for (String n : m.keySet()) {
 			if ((pM.containsKey(n)) || (StringUtil.isNullOrEmpty(right)) || (!(right.contains(n))))
 				continue;
 			String u = (String) m.get(n);
@@ -175,7 +175,7 @@ public class BootNavi implements IUIComponent {
 			handleChild(n, pM, m, paras, li, a);
 
 			content.addChild(li);
-		}
+		}*/
 	}
 
 	private void handleChild(String n, HashMap<String, String> pM, HashMap<String, String> m, FrontData paras,
