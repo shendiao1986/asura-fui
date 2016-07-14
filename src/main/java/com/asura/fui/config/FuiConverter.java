@@ -284,6 +284,7 @@ public class FuiConverter {
 		xs.aliasAttribute(BootNavi.class, "fluid", "fluid");
 		xs.aliasAttribute(BootNavi.class, "inverse", "inverse");
 		xs.aliasAttribute(BootNavi.class, "vertical", "vertical");
+		xs.aliasAttribute(BootNavi.class, "haslogon", "haslogon");
 
 		xs.alias("boot-panel", BootPanel.class);
 		xs.aliasAttribute(BootPanel.class, "head", "use-head");

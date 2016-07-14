@@ -6,16 +6,26 @@ import java.util.List;
 
 import com.cpkf.yyjd.tools.util.StringUtil;
 import com.asura.fui.component.IUIComponent;
+import com.asura.fui.component.data.DataDialog;
 import com.asura.fui.component.data.DataNavi;
 import com.asura.fui.component.data.IUIData;
+import com.asura.fui.component.data.UIDatas;
 import com.asura.fui.component.layout.IUILayout;
 import com.asura.fui.html.HtmlA;
 import com.asura.fui.html.HtmlDiv;
 import com.asura.fui.html.HtmlLi;
 import com.asura.fui.html.HtmlNavi;
+import com.asura.fui.html.HtmlScript;
+import com.asura.fui.html.HtmlSpan;
 import com.asura.fui.html.HtmlUL;
 import com.asura.fui.html.IHtmlElement;
 import com.asura.fui.html.SimpleHtml;
+import com.asura.fui.script.ScriptAssign;
+import com.asura.fui.script.ScriptCondition;
+import com.asura.fui.script.ScriptFunction;
+import com.asura.fui.script.ScriptSimple;
+import com.asura.fui.script.ScriptSwitch;
+import com.asura.fui.service.dispatch.FuiUrl;
 import com.asura.fui.util.ParamterUtil;
 import com.asura.fui.FrontData;
 
@@ -24,6 +34,7 @@ public class BootNavi implements IUIComponent {
 	private boolean fluid;
 	private boolean inverse;
 	private boolean vertical;
+	private boolean haslogon;
 
 	public boolean isFluid() {
 		return this.fluid;
@@ -74,6 +85,14 @@ public class BootNavi implements IUIComponent {
 		handleHeader(navi, div, paras);
 
 		handleMiddle(navi, div, paras);
+		
+		if(haslogon){
+		
+		  handleLoginDialog(navi, div, paras);
+		
+		  handleLoginScript(navi, div, paras);
+		
+		}
 
 		if (this.vertical) {
 			out.addChild(ul);
@@ -148,34 +167,28 @@ public class BootNavi implements IUIComponent {
 			content.addChild(li);
 		}
 
+	if(haslogon){
 		content = new HtmlUL(paras);
 		content.addAttr("class", "nav navbar-nav navbar-right");
 
 		middle.addChild(content);
 
-		/*for (String n : m.keySet()) {
-			if ((pM.containsKey(n)) || (StringUtil.isNullOrEmpty(right)) || (!(right.contains(n))))
-				continue;
-			String u = (String) m.get(n);
+		if (right.contains("登录")){
 			HtmlLi li = new HtmlLi(paras);
-
 			HtmlA a = new HtmlA(paras);
-			a.addAttr("href", u);
-			a.setContent(n);
+			a.addAttr("href", "javascript:login(true);");
+			a.setContent("登录");
 			li.addChild(a);
-
-			if (!(StringUtil.isNullOrEmpty(navi.getSelected()))) {
-				String se = ParamterUtil.getValue(navi.getSelected(), paras);
-
-				if (n.equals(se)) {
-					li.addAttr("class", "active");
-				}
-			}
-
-			handleChild(n, pM, m, paras, li, a);
-
 			content.addChild(li);
-		}*/
+		}else if(right.contains("退出")){
+			HtmlLi li = new HtmlLi(paras);
+			HtmlA a = new HtmlA(paras);
+			a.addAttr("href", "javascript:login(false);");
+			a.setContent("退出");
+			li.addChild(a);
+			content.addChild(li);
+		}
+	  }
 	}
 
 	private void handleChild(String n, HashMap<String, String> pM, HashMap<String, String> m, FrontData paras,
@@ -206,6 +219,50 @@ public class BootNavi implements IUIComponent {
 			li.addChild(drop);
 		}
 	}
+	
+	private void handleLoginScript(DataNavi navi, HtmlDiv div, FrontData paras){
+		StringBuffer sb = new StringBuffer();
+		sb.append("function closedialog(dialogid){\n$('#' + dialogid).modal('hide');\n}\n");
+		
+		sb.append("function submitlogin(loginformid){\nvar username = $('#username').val();\nvar userpassword = $('#password').val();\n");
+		sb.append("if(username == ''){\nalert('请填写用户名');\n} else if (userpassword == ''){\nalert('请填写密码');}");
+		sb.append("else{\n$('#' + loginformid).submit();}\n}\n");
+
+        sb.append("function login(key){\nif(key){\nvar actionurl = $('#user-login-form').attr('action');\n$('#user-login-form').attr('action',actionurl+'?islogin=true');\n$('#loginDialog').modal('show');\n} else {\n");
+		sb.append("var actionurl = $('#user-login-form').attr('action');\n$('#user-login-form').attr('action',actionurl+'?islogin=false');\n");
+		sb.append("$('#' + 'user-login-form').submit();\n}\n}");
+			
+		HtmlScript hs = new HtmlScript("text/javascript", sb.toString());
+		div.addChild(hs);
+	}
+	
+	private void handleLoginDialog(DataNavi navi, HtmlDiv div, FrontData paras) {
+		HtmlDiv dialog = new HtmlDiv(paras);
+		dialog.setClass("modal fade");
+		dialog.addAttr("id", "loginDialog");
+		dialog.addAttr("tabindex", "-1");
+		dialog.addAttr("role", "dialog");
+		dialog.addAttr("aria-hidden", "true");
+
+		HtmlDiv dia = new HtmlDiv(paras);
+		dia.setClass("modal-dialog");
+
+		dialog.addChild(dia);
+
+		HtmlDiv con = new HtmlDiv(paras);
+		con.setClass("modal-content");
+
+		dia.addChild(con);
+
+		createDialogHead(con,paras);
+		
+		createDialogBody(con,paras);
+		
+		createDialogFooter(con,paras);
+			
+		div.addChild(dialog);
+	
+	}
 
 	private String[] getChildren(HashMap<String, String> map, String name) {
 		List list = new ArrayList();
@@ -229,7 +286,117 @@ public class BootNavi implements IUIComponent {
 		}
 		return t;
 	}
+	
+	private void createDialogHead(HtmlDiv con,FrontData paras){
+		HtmlDiv head = new HtmlDiv(paras);
+		head.setClass("modal-header");
 
+		SimpleHtml bt = new SimpleHtml("button", paras);
+		bt.addAttr("type", "button");
+		bt.addAttr("class", "close");
+		bt.addAttr("data-dismiss", "modal");
+		bt.setContent("×");
+
+		head.addChild(bt);
+
+		SimpleHtml h4 = new SimpleHtml("h4", paras);
+		h4.setContent("登录提示");
+
+		head.addChild(h4);
+
+		con.addChild(head);
+	}
+	
+	private void createDialogBody(HtmlDiv con, FrontData paras){
+		HtmlDiv body = new HtmlDiv(paras);
+		body.setClass("modal-body");
+		con.addChild(body);
+
+		HtmlDiv body_name = new HtmlDiv(paras);
+		body_name.addStyle("padding-left", "80px");
+		HtmlSpan span_name = new HtmlSpan(paras);
+		span_name.setContent("用户名" + ":");
+		span_name.addStyle("float", "left");
+		span_name.addStyle("overflow", "hidden");
+		span_name.addStyle("width",  "15%");
+		body_name.addChild(span_name);
+		SimpleHtml html_name = new SimpleHtml("input", paras);
+		html_name.addAttr("name", "username");
+		html_name.addAttr("id", "username");
+		html_name.addStyle("width", "50%");
+		html_name.addAttr("type", "text");
+		body_name.addChild(html_name);
+		
+		
+		HtmlDiv body_password = new HtmlDiv(paras);
+		body_password.addStyle("padding-left", "80px");
+		body_password.addStyle("padding-top", "20px");
+		HtmlSpan span_password = new HtmlSpan(paras);
+		span_password.setContent("密 码" + ":");
+		span_password.addStyle("float", "left");
+		span_password.addStyle("overflow", "hidden");
+		span_password.addStyle("width",  "15%");
+		body_password.addChild(span_password);
+		SimpleHtml html_password = new SimpleHtml("input", paras);
+		html_password.addAttr("name", "password");
+		html_password.addAttr("id", "password");
+		html_password.addStyle("width", "50%");
+		html_password.addAttr("type", "password");
+		body_password.addChild(html_password);
+		
+		SimpleHtml divform = new SimpleHtml("form", paras);
+		divform.addAttr("id", "user-login-form");
+		FuiUrl url = (FuiUrl) paras.getValue("fui-url");
+		String action = url.toUrlBase() + "/post";
+		divform.addAttr("action", action);
+		divform.addAttr("method", "post");
+		divform.addChild(body_name);
+		divform.addChild(body_password);
+
+		SimpleHtml inputpost = new SimpleHtml("input", paras);
+		inputpost.addAttr("type", "hidden");
+		inputpost.addAttr("name", "post_id");
+		inputpost.addAttr("value", "user-login-form");
+		divform.addChild(inputpost);
+		body.addChild(divform);
+	}
+
+	private void createDialogFooter(HtmlDiv con, FrontData paras){
+		HtmlDiv footer = new HtmlDiv(paras);
+		footer.setClass("modal-footer");
+		con.addChild(footer);
+		
+		HtmlDiv toolbar = new HtmlDiv(paras);
+		toolbar.setClass("btn-toolbar");
+		footer.addChild(toolbar);
+		
+		HtmlDiv btngroup = new HtmlDiv(paras);
+		btngroup.setClass("btn-group");
+		SimpleHtml input = new SimpleHtml("button", paras);
+		input.addAttr("type", "button");
+		input.setClass("btn btn-default");
+		input.addAttr("id", "btn1");
+		input.addAttr("name", "submitbtn");
+		input.setClass("btn btn-default");
+		input.addAttr("onclick", "submitlogin('user-login-form');");
+		input.setContent("确定");
+        btngroup.addChild(input);
+        toolbar.addChild(btngroup);
+        
+        HtmlDiv btngroup2 = new HtmlDiv(paras);
+		btngroup2.setClass("btn-group");
+        SimpleHtml input2 = new SimpleHtml("button", paras);
+        input2.addAttr("type", "button");
+        input2.setClass("btn btn-default");
+        input2.addAttr("id", "btn2");
+        input2.addAttr("name", "cancelbtn");
+        input2.setClass("btn btn-default");
+        input2.addAttr("onclick", "closedialog('loginDialog');");
+        input2.setContent("取消");
+        btngroup2.addChild(input2);
+        toolbar.addChild(btngroup2);
+	}
+	
 	public static enum NaviPos {
 		Top, Bottom, Default;
 	}
