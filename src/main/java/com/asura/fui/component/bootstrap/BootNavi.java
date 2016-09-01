@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.IUIComponent;
 import com.asura.fui.component.data.DataDialog;
 import com.asura.fui.component.data.DataNavi;
@@ -181,6 +182,12 @@ public class BootNavi implements IUIComponent {
 			li.addChild(a);
 			content.addChild(li);
 		}else if(right.contains("退出")){
+			HtmlLi li_user = new HtmlLi(paras);
+			HtmlA span = new HtmlA(paras);
+			span.setContent(paras.getValueString("username"));
+			span.addAttr("href", "#");
+			li_user.addChild(span);
+			content.addChild(li_user);
 			HtmlLi li = new HtmlLi(paras);
 			HtmlA a = new HtmlA(paras);
 			a.addAttr("href", "javascript:login(false);");
@@ -246,6 +253,7 @@ public class BootNavi implements IUIComponent {
 
 		HtmlDiv dia = new HtmlDiv(paras);
 		dia.setClass("modal-dialog");
+		dia.addStyle("margin-top", "200px");
 
 		dialog.addChild(dia);
 

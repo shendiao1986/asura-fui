@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.cpkf.yyjd.tools.util.DateUtil;
+import com.asura.tools.util.DateUtil;
 
 public class PageCacheBatch {
 	private static List<PageCacheTask> tasks = new ArrayList();

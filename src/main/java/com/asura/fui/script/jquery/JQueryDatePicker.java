@@ -1,6 +1,6 @@
 package com.asura.fui.script.jquery;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.script.IUIScript;
 import com.asura.fui.FrontData;
 

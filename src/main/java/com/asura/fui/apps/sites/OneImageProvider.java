@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
+import com.asura.tools.data.DataRecord;
 import com.asura.fui.service.data.IOneDataProvider;
 import com.asura.fui.service.dispatch.FuiUrl;
 import com.asura.fui.FrontData;

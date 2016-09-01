@@ -1,8 +1,8 @@
 package com.asura.fui.apps.sites.urlstyle;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
-import com.cpkf.yyjd.tools.util.DateUtil;
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.util.DateUtil;
+import com.asura.tools.util.StringUtil;
 
 public class DateIdUrlStyle extends AbstractSitesUrlStyle {
 	public String getArticleField() {

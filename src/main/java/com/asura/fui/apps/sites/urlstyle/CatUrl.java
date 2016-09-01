@@ -1,6 +1,6 @@
 package com.asura.fui.apps.sites.urlstyle;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public class CatUrl {
 	private String name;

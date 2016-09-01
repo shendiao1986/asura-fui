@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asura.fui.FrontData;
-import com.cpkf.yyjd.tools.data.DataRecord;
+import com.asura.tools.data.DataRecord;
 
 public class MysqlExecuteDataProvider implements IDataProvider {
 	public static final String RE = "$";

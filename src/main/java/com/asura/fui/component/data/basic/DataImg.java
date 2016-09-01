@@ -1,6 +1,6 @@
 package com.asura.fui.component.data.basic;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.data.AbstractUIData;
 
 public class DataImg extends AbstractUIData {

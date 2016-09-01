@@ -1,6 +1,6 @@
 package com.asura.fui.component.bootstrap;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.IUIComponent;
 import com.asura.fui.component.data.DataBadge;
 import com.asura.fui.component.data.IUIData;

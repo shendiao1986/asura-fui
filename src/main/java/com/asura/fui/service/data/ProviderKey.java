@@ -1,6 +1,6 @@
 package com.asura.fui.service.data;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public class ProviderKey {
 	private String site;

@@ -1,6 +1,6 @@
 package com.asura.fui.apps.sites.urlstyle;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
+import com.asura.tools.data.DataRecord;
 
 public class IdHtmlUrlStyle extends AbstractSitesUrlStyle {
 	public String getArticleUrl(DataRecord article) {

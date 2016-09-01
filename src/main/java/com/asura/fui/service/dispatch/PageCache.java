@@ -2,14 +2,15 @@ package com.asura.fui.service.dispatch;
 
 import java.util.List;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
-import com.cpkf.yyjd.tools.data.newmysql.MysqlHandler;
-import com.cpkf.yyjd.tools.sql.SelectSQL;
-import com.cpkf.yyjd.tools.util.StringUtil;
-import com.cpkf.yyjd.tools.util.cache.SimpleCache;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.data.mysql.MysqlHandler;
+import com.asura.tools.sql.SelectSQL;
+import com.asura.tools.util.StringUtil;
+import com.asura.tools.util.cache.SimpleCache;
 import com.asura.fui.component.data.IUIData;
 import com.asura.fui.config.FuiConverter;
 import com.asura.fui.script.IUIScript;
+import com.asura.fui.service.StaticCacheService;
 import com.asura.fui.FuiPage;
 
 public class PageCache {
@@ -56,7 +57,7 @@ public class PageCache {
 	}
 
 	private static String getConfig(String server, String name) {
-		SelectSQL sql = new SelectSQL("page");
+		/*SelectSQL sql = new SelectSQL("page");
 		if (!(StringUtil.isNullOrEmpty(server))) {
 			sql.addWhereCondition("site", server);
 		}
@@ -71,6 +72,11 @@ public class PageCache {
 			return ((DataRecord) list.get(0)).getFieldValue("page");
 		}
 
-		return "";
+		return "";*/
+		String page_source = StaticCacheService.getSettingProperty("page_source");
+		if("files".equalsIgnoreCase(page_source))
+			return PageLoader.getConfigFromFile(name);
+		else
+		    return PageLoader.getConfigFromDB(server, name);
 	}
 }

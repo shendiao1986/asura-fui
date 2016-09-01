@@ -1,6 +1,6 @@
 package com.asura.fui.service.dispatch;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public class FuiUrl {
 

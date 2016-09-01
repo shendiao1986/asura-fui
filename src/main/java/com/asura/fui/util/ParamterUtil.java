@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import com.asura.fui.FrontData;
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public class ParamterUtil {
 	private static HashMap<String, HashMap<String, String>> cache = new HashMap();

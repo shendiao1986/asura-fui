@@ -2,13 +2,13 @@ package com.asura.fui.apps.sites.test;
 
 import java.util.Date;
 
-import com.cpkf.yyjd.tools.data.DataIterator;
-import com.cpkf.yyjd.tools.data.DataRecord;
-import com.cpkf.yyjd.tools.data.IEditor;
-import com.cpkf.yyjd.tools.data.mongo.MongoHandler;
-import com.cpkf.yyjd.tools.sql.SelectSQL;
-import com.cpkf.yyjd.tools.util.DateUtil;
-import com.cpkf.yyjd.tools.util.math.RandomUtil;
+import com.asura.tools.data.DataIterator;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.data.IEditor;
+import com.asura.tools.data.mongo.MongoHandler;
+import com.asura.tools.sql.SelectSQL;
+import com.asura.tools.util.DateUtil;
+import com.asura.tools.util.math.RandomUtil;
 
 public class SiteArticleTest {
 	public static void main(String[] args) {

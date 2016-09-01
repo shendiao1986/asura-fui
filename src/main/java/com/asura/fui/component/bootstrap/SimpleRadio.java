@@ -2,7 +2,7 @@ package com.asura.fui.component.bootstrap;
 
 import java.util.HashMap;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.AbstractUIComponent;
 import com.asura.fui.component.data.DataButtonGroup;
 import com.asura.fui.component.data.IUIData;
@@ -52,8 +52,9 @@ public class SimpleRadio extends AbstractUIComponent {
 				input.addAttr("title", (String) dMap.get(key));
 			}
 			input.addAttr("id", key);
+			input.addAttr("value", key);
 
-			if (key.equals(dr.getSelected())) {
+			if (key.equals(getValue(dr.getSelected(), paras))) {
 				input.addAttr("checked", "true");
 			}
 

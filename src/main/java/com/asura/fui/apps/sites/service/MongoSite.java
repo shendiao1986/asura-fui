@@ -1,6 +1,6 @@
 package com.asura.fui.apps.sites.service;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
+import com.asura.tools.data.DataRecord;
 
 public class MongoSite extends AbstractSitebean {
 	private String sub;

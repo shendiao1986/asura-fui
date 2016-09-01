@@ -1,6 +1,6 @@
 package com.asura.fui.component.custom;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.data.basic.DataText;
 import com.asura.fui.html.HtmlDiv;
 import com.asura.fui.FrontData;

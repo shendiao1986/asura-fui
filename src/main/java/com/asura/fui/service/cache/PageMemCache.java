@@ -1,6 +1,6 @@
 package com.asura.fui.service.cache;
 
-import com.cpkf.yyjd.tools.util.cache.SimpleCache;
+import com.asura.tools.util.cache.SimpleCache;
 import com.asura.fui.service.dispatch.FuiUrl;
 
 public class PageMemCache implements IPageCache {

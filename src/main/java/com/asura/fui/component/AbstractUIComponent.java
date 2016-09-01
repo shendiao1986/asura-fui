@@ -3,7 +3,7 @@ package com.asura.fui.component;
 import java.util.HashMap;
 import java.util.List;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.event.UIEvent;
 import com.asura.fui.component.event.UIEvents;
 import com.asura.fui.html.IHtmlElement;

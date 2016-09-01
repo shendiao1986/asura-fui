@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.apps.sites.AttachmentCaches;
 import com.asura.fui.component.data.IUIData;
 import com.asura.fui.component.data.UIDatas;

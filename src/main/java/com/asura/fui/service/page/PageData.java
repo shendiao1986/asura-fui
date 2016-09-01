@@ -3,7 +3,7 @@ package com.asura.fui.service.page;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.service.dispatch.FuiUrl;
 import com.asura.fui.FrontData;
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asura.fui.FrontData;
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public class ScriptCondition implements IUIScript {
 	private String con;

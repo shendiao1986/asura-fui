@@ -1,14 +1,16 @@
 package com.asura.fui.service.page;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
-import com.cpkf.yyjd.tools.sql.SelectSQL;
-import com.cpkf.yyjd.tools.util.StringUtil;
-import com.cpkf.yyjd.tools.util.math.NumberUtil;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.sql.SelectSQL;
+import com.asura.tools.util.StringUtil;
+import com.asura.tools.util.math.NumberUtil;
 import com.asura.fui.component.custom.ListViewUtil;
 import com.asura.fui.service.data.DataSourceProvider;
 import com.asura.fui.service.dispatch.FuiUrl;
@@ -65,7 +67,14 @@ public class ParaMongoListViewBuilder extends AbstractParaBuilder {
 			for (DataRecord dr : list) {
 				FrontData subD = new FrontData();
 				for (String key : m.keySet()) {
-					subD.AddField(key, ListViewUtil.getText(getLenghed(dr.getFieldValue((String) m.get(key)))));
+					Object tmp = dr.getFieldObject((String) m.get(key));
+					if(tmp != null && tmp instanceof Date){
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						subD.AddField(key, ListViewUtil.getText(getLenghed(sdf.format((Date)tmp))));
+					}else{
+						subD.AddField(key, ListViewUtil.getText(getLenghed(dr.getFieldValue((String) m.get(key)))));
+					}
+					
 				}
 				result.add(subD);
 			}

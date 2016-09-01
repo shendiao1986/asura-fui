@@ -1,6 +1,6 @@
 package com.asura.fui.apps.sites.urlstyle;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
+import com.asura.tools.data.DataRecord;
 
 public class PostIdUrlStyle extends AbstractSitesUrlStyle {
 	public String getArticleField() {

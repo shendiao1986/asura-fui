@@ -1,10 +1,10 @@
 package com.asura.fui.apps.sites.test;
 
-import com.cpkf.yyjd.tools.data.DataIterator;
-import com.cpkf.yyjd.tools.data.DataRecord;
-import com.cpkf.yyjd.tools.data.IEditor;
-import com.cpkf.yyjd.tools.data.mongo.MongoHandler;
-import com.cpkf.yyjd.tools.sql.SelectSQL;
+import com.asura.tools.data.DataIterator;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.data.IEditor;
+import com.asura.tools.data.mongo.MongoHandler;
+import com.asura.tools.sql.SelectSQL;
 
 public class SitesCatMapTest {
 	public static void main(String[] args) {
@@ -23,7 +23,7 @@ public class SitesCatMapTest {
 			DataRecord dr = (DataRecord) it.next();
 			DataRecord n = new DataRecord();
 			n.AddField("sub", "www");
-			n.AddField("cat", new String[] { "manager", "deal", "project" }[com.cpkf.yyjd.tools.util.math.RandomUtil
+			n.AddField("cat", new String[] { "manager", "deal", "project" }[com.asura.tools.util.math.RandomUtil
 					.random(0, 2)]);
 			n.AddField("a_id", dr.getFieldValue("id"));
 			n.AddField("date", dr.getFieldValue("date"));

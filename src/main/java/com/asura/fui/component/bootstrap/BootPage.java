@@ -2,8 +2,8 @@ package com.asura.fui.component.bootstrap;
 
 import java.util.HashMap;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
-import com.cpkf.yyjd.tools.util.math.NumberUtil;
+import com.asura.tools.util.StringUtil;
+import com.asura.tools.util.math.NumberUtil;
 import com.asura.fui.component.AbstractUIComponent;
 import com.asura.fui.component.data.DataPage;
 import com.asura.fui.component.data.IUIData;
@@ -48,17 +48,17 @@ public class BootPage extends AbstractUIComponent {
 		pa.setContent("上一页");
 		pre.addChild(pa);
 
-		if (StringUtil.isNullOrEmpty((String) m.get(s - 1))) {
+		if (StringUtil.isNullOrEmpty((String) m.get((s - 1)+""))) {
 			pre.setClass("disabled");
 			pa.setUrl("");
 		} else {
-			pa.setUrl((String) m.get(s - 1));
+			pa.setUrl((String) m.get((s - 1)+""));
 		}
 
 		ul.addChild(pre);
 
 		for (int i = start; i < Math.min(start + this.count, imax + 1); ++i) {
-			String v = (String) m.get(i);
+			String v = (String) m.get(i+"");
 			HtmlLi li = new HtmlLi(paras);
 			if (i == s) {
 				li.setClass("active");
@@ -75,11 +75,11 @@ public class BootPage extends AbstractUIComponent {
 		pa.setContent("下一页");
 		next.addChild(pa);
 
-		if (StringUtil.isNullOrEmpty((String) m.get(s + 1))) {
+		if (StringUtil.isNullOrEmpty((String) m.get((s + 1)+""))) {
 			next.setClass("disabled");
 			pa.setUrl("");
 		} else {
-			pa.setUrl((String) m.get(s + 1));
+			pa.setUrl((String) m.get((s + 1)+""));
 			if (s + 1 > imax) {
 				next.setClass("disabled");
 				pa.setUrl("");

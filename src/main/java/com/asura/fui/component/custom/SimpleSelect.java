@@ -2,7 +2,7 @@ package com.asura.fui.component.custom;
 
 import java.util.HashMap;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.AbstractUIComponent;
 import com.asura.fui.component.data.DataNavi;
 import com.asura.fui.component.data.IUIData;

@@ -28,11 +28,16 @@
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.lenovo.appstore.search</groupId>
 			<artifactId>tools</artifactId>
 			<version>2015112001</version>
-		</dependency>
+		</dependency> -->
+		<dependency>
+            <groupId>com.asura.tool</groupId>
+            <artifactId>asura-tool</artifactId>
+            <version>0.0.1</version>
+        </dependency>
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
@@ -43,9 +48,21 @@
 			<artifactId>json</artifactId>
 			<version>20141113</version>
 		</dependency>
+		<dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>2.10.1</version>
+        </dependency>
 	</dependencies>
 
 	<build>
+	    <!-- <finalName>asura-fui</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.asura.fui.FrontData;
 import com.asura.fui.FuiCss;
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public abstract class AbstractHtmlElement implements IHtmlElement {
 	

@@ -1,7 +1,7 @@
 package com.asura.fui.apps.sites.service;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.util.StringUtil;
 
 public abstract class AbstractSitebean implements ISiteBean {
 	public ISiteBean fromDataRecord(DataRecord dr) {

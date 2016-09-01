@@ -1,6 +1,6 @@
 package com.asura.fui.apps.sites;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
+import com.asura.tools.data.DataRecord;
 import com.asura.fui.service.data.IOneDataProvider;
 import com.asura.fui.FrontData;
 

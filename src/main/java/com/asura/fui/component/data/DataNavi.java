@@ -3,7 +3,7 @@ package com.asura.fui.component.data;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public class DataNavi extends AbstractUIData {
 	private LinkedHashMap<String, String> map;

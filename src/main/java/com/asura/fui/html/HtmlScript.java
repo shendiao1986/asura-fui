@@ -1,7 +1,7 @@
 package com.asura.fui.html;
 
 import com.asura.fui.FrontData;
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 
 public class HtmlScript extends AbstractHtmlElement {
 	public static final String CSS = "text/css";

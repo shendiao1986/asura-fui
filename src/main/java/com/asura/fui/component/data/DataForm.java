@@ -2,7 +2,7 @@ package com.asura.fui.component.data;
 
 import java.util.List;
 
-import com.cpkf.yyjd.tools.util.StringUtil;
+import com.asura.tools.util.StringUtil;
 import com.asura.fui.component.layout.IUILayout;
 import com.asura.fui.html.IHtmlElement;
 import com.asura.fui.html.SimpleHtml;

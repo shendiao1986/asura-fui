@@ -16,8 +16,10 @@ import com.asura.fui.component.bootstrap.BootButton;
 import com.asura.fui.component.bootstrap.BootButtons;
 import com.asura.fui.component.bootstrap.BootChart;
 import com.asura.fui.component.bootstrap.BootDialog;
+import com.asura.fui.component.bootstrap.BootFooter;
 import com.asura.fui.component.bootstrap.BootHeader;
 import com.asura.fui.component.bootstrap.BootNavi;
+import com.asura.fui.component.bootstrap.BootNotification;
 import com.asura.fui.component.bootstrap.BootPage;
 import com.asura.fui.component.bootstrap.BootPageNoWrap;
 import com.asura.fui.component.bootstrap.BootPanel;
@@ -51,6 +53,7 @@ import com.asura.fui.component.data.DataChart;
 import com.asura.fui.component.data.DataDialog;
 import com.asura.fui.component.data.DataDiv;
 import com.asura.fui.component.data.DataFilter;
+import com.asura.fui.component.data.DataFooter;
 import com.asura.fui.component.data.DataForm;
 import com.asura.fui.component.data.DataHeader;
 import com.asura.fui.component.data.DataIFrame;
@@ -59,6 +62,7 @@ import com.asura.fui.component.data.DataLabel;
 import com.asura.fui.component.data.DataList;
 import com.asura.fui.component.data.DataListView;
 import com.asura.fui.component.data.DataNavi;
+import com.asura.fui.component.data.DataNotification;
 import com.asura.fui.component.data.DataPage;
 import com.asura.fui.component.data.DataPanel;
 import com.asura.fui.component.data.DataProgress;
@@ -410,6 +414,19 @@ public class FuiConverter {
 		xs.aliasAttribute(SimpleSelect.class, "bold", "bold");
 		xs.aliasAttribute(SimpleSelect.class, "twoline", "twoline");
 		xs.aliasAttribute(SimpleSelect.class, "percent", "percent");
+		
+		xs.alias("boot-notification", BootNotification.class);
+		xs.aliasAttribute(BootNotification.class, "head", "use-head");		
+		xs.aliasAttribute(BootNotification.class, "style", "style");
+		xs.aliasAttribute(BootNotification.class, "displaylength", "displaylength");
+		
+		xs.alias("boot-footer", BootFooter.class);
+		xs.aliasAttribute(BootFooter.class, "textfield", "text-field");		
+		xs.aliasAttribute(BootFooter.class, "mongokey", "mongo-key");
+		xs.aliasAttribute(BootFooter.class, "mongodb", "mongo-db-name");
+		xs.aliasAttribute(BootFooter.class, "mysqlkey", "mysql-key");
+		xs.aliasAttribute(BootFooter.class, "tablename", "table-name");
+		
 	}
 
 	private static void setUIData(XStream xs) {
@@ -521,6 +538,19 @@ public class FuiConverter {
 
 		xs.alias("data-ref", DataRef.class);
 		xs.aliasAttribute(DataRef.class, "ref", "ref");
+		
+		xs.alias("data-notification", DataNotification.class);
+		xs.aliasAttribute(DataNotification.class, "head", "head");
+		xs.aliasAttribute(DataNotification.class, "datakey", "datakey");
+		xs.aliasAttribute(DataNotification.class, "cat", "cat");
+		xs.aliasAttribute(DataNotification.class, "title", "title");
+		xs.aliasAttribute(DataNotification.class, "content", "content");
+		
+		xs.alias("data-footer", DataFooter.class);
+		xs.aliasAttribute(DataFooter.class, "keyLabels", "key-labels");
+		xs.aliasAttribute(DataFooter.class, "keyUrls", "key-urls");
+		xs.aliasAttribute(DataFooter.class, "keyLabelTypes", "key-label-types");
+		xs.aliasAttribute(DataFooter.class, "keyUrlTypes", "key-url-types");
 	}
 
 	private static void setLayout(XStream xs) {

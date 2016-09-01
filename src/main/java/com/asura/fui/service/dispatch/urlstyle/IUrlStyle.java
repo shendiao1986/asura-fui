@@ -1,6 +1,6 @@
 package com.asura.fui.service.dispatch.urlstyle;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
+import com.asura.tools.data.DataRecord;
 import com.asura.fui.service.dispatch.FuiUrl;
 
 public interface IUrlStyle {

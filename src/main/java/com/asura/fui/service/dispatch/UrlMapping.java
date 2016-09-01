@@ -1,6 +1,6 @@
 package com.asura.fui.service.dispatch;
 
-import com.cpkf.yyjd.tools.util.RegularExpressionUtil;
+import com.asura.tools.util.RegularExpressionUtil;
 
 public class UrlMapping {
 	private String pattern;

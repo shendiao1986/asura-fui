@@ -1,8 +1,8 @@
 package com.asura.fui.apps.sites.test;
 
-import com.cpkf.yyjd.tools.data.DataRecord;
-import com.cpkf.yyjd.tools.data.IEditor;
-import com.cpkf.yyjd.tools.data.mongo.MongoHandler;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.data.IEditor;
+import com.asura.tools.data.mongo.MongoHandler;
 
 public class SitesSiteTest {
 	public static void main(String[] args) {
