@@ -4,7 +4,7 @@
 
 	<groupId>com.asura.fui</groupId>
 	<artifactId>asura-fui</artifactId>
-	<version>0.0.1</version>
+	<version>0.1.1</version>
 	<packaging>jar</packaging>
 
 	<name>asura-fui</name>
