@@ -47,11 +47,11 @@ public class BootButtons extends AbstractUIComponent {
 	public IHtmlElement toHtml(IUIData data, IUILayout layout, FrontData paras) {
 		DataButtonGroup dr = (DataButtonGroup) data;
 
-		HashMap<String, String> map = ParamterUtil.convert(dr.getKeyLabels());
+		HashMap<String, String> map = ParamterUtil.convert(ParamterUtil.getValue(dr.getKeyLabels(), paras));
 
-		HashMap<String, String> uMap = ParamterUtil.convert(dr.getKeyUrls());
+		HashMap<String, String> uMap = ParamterUtil.convert(ParamterUtil.getValue(dr.getKeyUrls(), paras));
 
-		HashMap<String, String> tMap = ParamterUtil.convert(this.type);
+		HashMap<String, String> tMap = ParamterUtil.convert(ParamterUtil.getValue(this.type, paras));
 		Iterator localIterator;
 		if (!(this.multi)) {
 			HtmlDiv div = new HtmlDiv(paras);

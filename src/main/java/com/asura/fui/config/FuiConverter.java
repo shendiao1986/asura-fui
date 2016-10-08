@@ -368,6 +368,9 @@ public class FuiConverter {
 		xs.aliasAttribute(SimpleListView.class, "width", "width");
 		xs.aliasAttribute(SimpleListView.class, "headerStyle", "header-style");
 		xs.aliasAttribute(SimpleListView.class, "columnStyle", "column-style");
+		xs.aliasAttribute(SimpleListView.class, "hasCheckBox", "hasCheckBox");
+		xs.aliasAttribute(SimpleListView.class, "checkboxKey", "checkboxKey");
+		
 
 		xs.alias("condition-column", ListViewConditionColumn.class);
 		xs.aliasAttribute(ListViewConditionColumn.class, "field", "field");

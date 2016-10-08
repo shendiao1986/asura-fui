@@ -7,9 +7,11 @@ import com.asura.tools.util.StringUtil;
 import com.asura.tools.util.math.NumberUtil;
 import com.asura.fui.component.AbstractUIComponent;
 import com.asura.fui.component.data.DataListView;
+import com.asura.fui.component.data.DataNavi;
 import com.asura.fui.component.data.IUIData;
 import com.asura.fui.component.layout.IUILayout;
 import com.asura.fui.html.HtmlDiv;
+import com.asura.fui.html.HtmlScript;
 import com.asura.fui.html.HtmlSpan;
 import com.asura.fui.html.IHtmlElement;
 import com.asura.fui.html.SimpleHtml;
@@ -21,6 +23,10 @@ public class SimpleListView extends AbstractUIComponent {
 	private String headerStyle;
 	private String columnStyle;
 	private IListViewColumn column;
+	
+	private boolean hasCheckBox;
+	private String checkboxKey = "id";
+	
 
 	public IHtmlElement toHtml(IUIData data, IUILayout layout, FrontData paras) {
 		DataListView lv = (DataListView) data;
@@ -50,6 +56,28 @@ public class SimpleListView extends AbstractUIComponent {
 				for (String key : ParamterUtil.convert(this.columnStyle).keySet()) {
 					column.addStyle(key, (String) ParamterUtil.convert(this.columnStyle).get(key));
 				}
+				
+				if(this.hasCheckBox){
+					HtmlDiv item = new HtmlDiv(paras);
+					item.addStyle("width",  "2%");
+					item.addStyle("float", "left");
+					item.addStyle("height", getHeight() + "px");
+					item.addStyle("line-height", getHeight() + "px");
+					item.addStyle("white-space", "nowrap");
+					item.addStyle("overflow", "hidden");
+					
+					SimpleHtml checkbox = new SimpleHtml("input", paras);
+					checkbox.addAttr("type", "checkbox");
+					checkbox.addAttr("name", checkboxKey);
+					checkbox.addAttr("value", fd.getValueString(checkboxKey));
+					checkbox.addStyle("line-height", getHeight() + "px");
+					checkbox.addStyle("height", getHeight()*0.8 + "px");
+					item.addChild(checkbox);
+
+					column.addChild(item);
+					
+				}
+				
 
 				for (String key : hMap.keySet()) {
 					HtmlDiv item = new HtmlDiv(paras);
@@ -106,6 +134,22 @@ public class SimpleListView extends AbstractUIComponent {
 			header.addStyle(key, (String) ParamterUtil.convert(this.headerStyle).get(key));
 		}
 
+		
+		if(this.hasCheckBox){
+			HtmlDiv ele = new HtmlDiv();
+			ele.addStyle("width","2%");
+			ele.addStyle("float", "left");
+			
+			SimpleHtml checkbox = new SimpleHtml("input", paras);
+			checkbox.addAttr("onclick", "triggerCheckbox(this);");
+			checkbox.addAttr("type", "checkbox");
+			checkbox.addAttr("value", "");
+			ele.addChild(checkbox);
+
+			header.addChild(ele);
+			
+		}
+		
 		for (String key : hMap.keySet()) {
 			HtmlDiv ele = new HtmlDiv();
 			ele.addStyle("width", ((String) wMap.get(key)) + "%");
@@ -118,7 +162,17 @@ public class SimpleListView extends AbstractUIComponent {
 
 			header.addChild(ele);
 		}
-
+		handScript(header,paras);
+		
 		div.addChild(header);
 	}
+	
+	private void handScript(HtmlDiv div, FrontData paras){
+		StringBuffer sb = new StringBuffer();
+		sb.append("function triggerCheckbox(item){\n$(\"input[name='"+checkboxKey+"']\").prop('checked',$(item).is(':checked'));\n}");
+					
+		HtmlScript hs = new HtmlScript("text/javascript", sb.toString());
+		div.addChild(hs);
+	}
+	
 }
