@@ -28,7 +28,7 @@ public abstract class AbstractMirrisChart implements IUIChart {
 		list.add("  xkey: " + getScriptFields(new String[] { chart.getKeyName(paras) }, this.keyVar));
 		list.add("  ykeys:  " + getScriptFields(chart.getValueNames(paras), this.valueVar));
 		list.add("  labels:  " + getScriptFields(chart.getLabels(paras), this.labelVar));
-		list.add("  xLabels: 'day'");
+		//list.add("  xLabels: 'day'");
 		
 
 		if (getOptions() != null) {
