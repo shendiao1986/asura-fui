@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.asura.fui.FrontData;
+import com.asura.fui.util.FuiMysqlHandler;
 import com.asura.tools.data.DataRecord;
-import com.asura.tools.data.mysql.MysqlHandler;
 import com.asura.tools.sql.SelectSQL;
 
 public class MysqlDataProvider implements IDataProvider {
@@ -19,7 +19,7 @@ public class MysqlDataProvider implements IDataProvider {
 		SelectSQL sql = new SelectSQL();
 		sql.setSql(s);
 
-		List list = new MysqlHandler().selectList(sql);
+		List list = FuiMysqlHandler.getFuiMysqlHandler().selectList(sql);
 
 		if (list.size() > 0) {
 			if (this.single) {

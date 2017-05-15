@@ -6,28 +6,28 @@ import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 public class DataConverter {
-	
+
 	public static FrontData fromParameter(HttpServletRequest request) {
-		return fromParameter(request, true);
+		return fromParameter(request, false);
 	}
-	
-	public static FrontData fromParameter(HttpServletRequest request, boolean encoder){
-		FrontData data=new FrontData();
-		for(Iterator localIterator=request.getParameterMap().keySet().iterator();localIterator.hasNext();){
-			Object name =localIterator.next();
-			if(encoder){
+
+	public static FrontData fromParameter(HttpServletRequest request, boolean encoder) {
+		FrontData data = new FrontData();
+		for (Iterator localIterator = request.getParameterMap().keySet().iterator(); localIterator.hasNext();) {
+			Object name = localIterator.next();
+			if (encoder) {
 				try {
-					data.AddField((String)name, new String(request.getParameter((String)name).getBytes("ISO-8859-1"), "UTF8"));
+					data.AddField((String) name,
+							new String(request.getParameter((String) name).getBytes("ISO-8859-1"), "UTF8"));
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
 				}
-			}else{
-				 data.AddField((String)name, request.getParameter((String)name));
+			} else {
+				data.AddField((String) name, request.getParameter((String) name));
 			}
 		}
-		
+
 		Enumeration en = request.getSession().getAttributeNames();
 		while (en.hasMoreElements()) {
 			String name = (String) en.nextElement();
@@ -35,9 +35,9 @@ public class DataConverter {
 		}
 		return data;
 	}
-	
+
 	public static FrontData fromOnlyParameter(HttpServletRequest request) {
-		FrontData data=new FrontData();
+		FrontData data = new FrontData();
 		for (Iterator localIterator = request.getParameterMap().keySet().iterator(); localIterator.hasNext();) {
 			Object name = localIterator.next();
 			try {
@@ -47,7 +47,7 @@ public class DataConverter {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return data;
 	}
 

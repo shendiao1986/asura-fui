@@ -2,6 +2,8 @@ package com.asura.fui.config;
 
 import java.util.ArrayList;
 
+import com.asura.fui.FuiPage;
+import com.asura.fui.PageDef;
 import com.asura.fui.apps.sites.SiteArticleProvider;
 import com.asura.fui.apps.sites.SiteArticlesProvider;
 import com.asura.fui.apps.sites.SiteArticlesRandomProvider;
@@ -106,8 +108,6 @@ import com.asura.fui.script.jquery.JQueryGet;
 import com.asura.fui.service.data.DataProvider;
 import com.asura.fui.service.data.MysqlDataProvider;
 import com.asura.fui.service.data.MysqlExecuteDataProvider;
-import com.asura.fui.FuiPage;
-import com.asura.fui.PageDef;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -192,6 +192,8 @@ public class FuiConverter {
 	}
 
 	private static void setScripts(XStream xs) {
+		// xs.alias("script", IUIChart.class);
+
 		xs.alias("function", ScriptFunction.class);
 		xs.aliasAttribute(ScriptFunction.class, "name", "name");
 		xs.aliasAttribute(ScriptFunction.class, "vars", "vars");
@@ -370,7 +372,6 @@ public class FuiConverter {
 		xs.aliasAttribute(SimpleListView.class, "columnStyle", "column-style");
 		xs.aliasAttribute(SimpleListView.class, "hasCheckBox", "hasCheckBox");
 		xs.aliasAttribute(SimpleListView.class, "checkboxKey", "checkboxKey");
-		
 
 		xs.alias("condition-column", ListViewConditionColumn.class);
 		xs.aliasAttribute(ListViewConditionColumn.class, "field", "field");
@@ -417,19 +418,19 @@ public class FuiConverter {
 		xs.aliasAttribute(SimpleSelect.class, "bold", "bold");
 		xs.aliasAttribute(SimpleSelect.class, "twoline", "twoline");
 		xs.aliasAttribute(SimpleSelect.class, "percent", "percent");
-		
+
 		xs.alias("boot-notification", BootNotification.class);
-		xs.aliasAttribute(BootNotification.class, "head", "use-head");		
+		xs.aliasAttribute(BootNotification.class, "head", "use-head");
 		xs.aliasAttribute(BootNotification.class, "style", "style");
 		xs.aliasAttribute(BootNotification.class, "displaylength", "displaylength");
-		
+
 		xs.alias("boot-footer", BootFooter.class);
-		xs.aliasAttribute(BootFooter.class, "textfield", "text-field");		
+		xs.aliasAttribute(BootFooter.class, "textfield", "text-field");
 		xs.aliasAttribute(BootFooter.class, "mongokey", "mongo-key");
 		xs.aliasAttribute(BootFooter.class, "mongodb", "mongo-db-name");
 		xs.aliasAttribute(BootFooter.class, "mysqlkey", "mysql-key");
 		xs.aliasAttribute(BootFooter.class, "tablename", "table-name");
-		
+
 	}
 
 	private static void setUIData(XStream xs) {
@@ -541,14 +542,14 @@ public class FuiConverter {
 
 		xs.alias("data-ref", DataRef.class);
 		xs.aliasAttribute(DataRef.class, "ref", "ref");
-		
+
 		xs.alias("data-notification", DataNotification.class);
 		xs.aliasAttribute(DataNotification.class, "head", "head");
 		xs.aliasAttribute(DataNotification.class, "datakey", "datakey");
 		xs.aliasAttribute(DataNotification.class, "cat", "cat");
 		xs.aliasAttribute(DataNotification.class, "title", "title");
 		xs.aliasAttribute(DataNotification.class, "content", "content");
-		
+
 		xs.alias("data-footer", DataFooter.class);
 		xs.aliasAttribute(DataFooter.class, "keyLabels", "key-labels");
 		xs.aliasAttribute(DataFooter.class, "keyUrls", "key-urls");

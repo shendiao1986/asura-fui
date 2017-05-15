@@ -2,11 +2,11 @@ package com.asura.fui.security;
 
 import java.util.List;
 
+import com.asura.fui.exception.FuiConfigExpcetion;
+import com.asura.fui.util.FuiMysqlHandler;
 import com.asura.tools.data.DataRecord;
-import com.asura.tools.data.mysql.MysqlHandler;
 import com.asura.tools.sql.SelectSQL;
 import com.asura.tools.util.cache.SimpleCache;
-import com.asura.fui.exception.FuiConfigExpcetion;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -17,7 +17,7 @@ public class SecurityCache {
 		if (!(cache.iscached(server))) {
 			SelectSQL sql = new SelectSQL("security");
 			sql.addWhereCondition("server", server);
-			List list = new MysqlHandler().selectList(sql);
+			List list = FuiMysqlHandler.getFuiMysqlHandler().selectList(sql);
 
 			if (list.size() == 1)
 				try {

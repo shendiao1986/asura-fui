@@ -2,6 +2,8 @@ package com.asura.fui.service.data;
 
 import java.util.List;
 
+import com.asura.fui.service.dispatch.FuiUrl;
+import com.asura.fui.util.FuiMysqlHandler;
 import com.asura.tools.data.DataRecord;
 import com.asura.tools.data.mongo.MongoHandler;
 import com.asura.tools.data.mysql.ConnectionInformation;
@@ -9,7 +11,6 @@ import com.asura.tools.data.mysql.MysqlHandler;
 import com.asura.tools.sql.SelectSQL;
 import com.asura.tools.util.StringUtil;
 import com.asura.tools.util.cache.SimpleCache;
-import com.asura.fui.service.dispatch.FuiUrl;
 
 public class DataSourceProvider {
 	private static SimpleCache<String, String> cache = new SimpleCache(1000000);
@@ -51,7 +52,7 @@ public class DataSourceProvider {
 			if (!(StringUtil.isNullOrEmpty(server))) {
 				sql.addWhereCondition("server", server);
 			}
-			List list = new MysqlHandler().selectList(sql);
+			List list = FuiMysqlHandler.getFuiMysqlHandler().selectList(sql);
 
 			if (list.size() > 0)
 				cache.cache(s, ((DataRecord) list.get(0)).getFieldValue("config"), 3600);

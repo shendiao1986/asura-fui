@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import com.asura.fui.util.ParamterUtil;
 import com.asura.tools.util.StringUtil;
 import com.asura.tools.util.math.NumberUtil;
-import com.asura.fui.util.ParamterUtil;
 
 public class FuiCss {
 	private HashMap<String, String> map;
 
 	public FuiCss() {
-		this.map = new LinkedHashMap();
+		this.map = new LinkedHashMap<>();
 	}
 
 	public void add(String key, String value) {

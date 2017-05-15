@@ -2,23 +2,23 @@ package com.asura.fui.service.cache;
 
 import java.util.List;
 
+import com.asura.fui.service.dispatch.FuiUrl;
+import com.asura.fui.util.FuiMysqlHandler;
 import com.asura.tools.data.DataRecord;
-import com.asura.tools.data.mysql.MysqlHandler;
 import com.asura.tools.sql.SelectSQL;
 import com.asura.tools.util.cache.SimpleCache;
-import com.asura.fui.service.dispatch.FuiUrl;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 public class PageCacheService {
-	
+
 	private static SimpleCache<String, IPageCache> cache = new SimpleCache(10000);
-	
+
 	public static IPageCache getPageCache(FuiUrl url) {
 		if (!(cache.iscached(url.getServer()))) {
 			SelectSQL sql = new SelectSQL("page_cache");
 			sql.addWhereCondition("server", url.getServer());
-			List list = new MysqlHandler().selectList(sql);
+			List list = FuiMysqlHandler.getFuiMysqlHandler().selectList(sql);
 
 			if (list.size() == 1)
 				try {
@@ -32,7 +32,7 @@ public class PageCacheService {
 
 		return ((IPageCache) cache.get(url.getServer()));
 	}
-	
+
 	public static IPageCache fromXml(String xml) {
 		XStream xs = new XStream(new DomDriver());
 

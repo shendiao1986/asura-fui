@@ -3,8 +3,8 @@ package com.asura.fui.service.dispatch;
 import java.util.HashMap;
 import java.util.List;
 
+import com.asura.fui.util.FuiMysqlHandler;
 import com.asura.tools.data.DataRecord;
-import com.asura.tools.data.mysql.MysqlHandler;
 import com.asura.tools.sql.SelectSQL;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
@@ -23,7 +23,7 @@ public class DispatcherCache {
 		lowMap = new HashMap();
 
 		SelectSQL sql = new SelectSQL("url_dispatcher");
-		List<DataRecord> list = new MysqlHandler().selectList(sql);
+		List<DataRecord> list = FuiMysqlHandler.getFuiMysqlHandler().selectList(sql);
 		for (DataRecord dr : list) {
 			IUrlDispatcher dp = fromXml(dr.getFieldValue("dispatcher"));
 			map.put(dr.getFieldValue("server") + "어" + dr.getFieldValue("port"), dp);
@@ -49,7 +49,6 @@ public class DispatcherCache {
 		return dispatcher;
 	}
 
-	
 	private static IUrlDispatcher fromXml(String xml) {
 		XStream xs = new XStream(new DomDriver());
 		xs.alias("simple-dispatcher", SimpleDispatcher.class);

@@ -3,10 +3,10 @@ package com.asura.fui.service.data;
 import java.util.HashMap;
 import java.util.List;
 
-import com.asura.tools.data.DataRecord;
-import com.asura.tools.data.mysql.MysqlHandler;
-import com.asura.tools.sql.SelectSQL;
 import com.asura.fui.config.FuiConverter;
+import com.asura.fui.util.FuiMysqlHandler;
+import com.asura.tools.data.DataRecord;
+import com.asura.tools.sql.SelectSQL;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
@@ -24,7 +24,7 @@ public class DataProviderCache {
 		lowMap = new HashMap();
 
 		SelectSQL sql = new SelectSQL("data_provider");
-		List<DataRecord> list = new MysqlHandler().selectList(sql);
+		List<DataRecord> list = FuiMysqlHandler.getFuiMysqlHandler().selectList(sql);
 		for (DataRecord dr : list) {
 			DataProvider dp = fromXml(dr.getFieldValue("provider"));
 			map.put(dr.getFieldValue("site") + "어" + dr.getFieldValue("category") + "어" + dr.getFieldValue("key"), dp);
